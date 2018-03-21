@@ -33,7 +33,14 @@ class AuthToken(View):
             "pkStockLocationId": "63d2d7b6-ec58-4f2c-a55e-2f8be11ea296",
         }
         headers = {
+            'Host': 'eu-ext.linnworks.net',
+            'Connection': 'keep-alive',
+            'Accept': 'application/json,text/javascript,*/*;q=0.01',
+            'Origin': 'https://linnworks.herokuapp.com/',
+            'Accept-Language': 'en',
+            'Referer': 'https://www.linnworks.net/',
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'Accept-Encoding': 'gzip,deflate',
             'Authorization': main_token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
