@@ -24,6 +24,8 @@ class AuthToken(View):
         print("status_code====>", response.status_code)
         print("status_text====>", response.text)
 
+        my_token = response.text.get('Token')
+
         location_url = "https://eu-ext.linnworks.net//api/Locations/GetLocation"
         l_payload = {
             "pkStockLocationId": "63d2d7b6-ec58-4f2c-a55e-2f8be11ea296",
@@ -38,7 +40,7 @@ class AuthToken(View):
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Referer': 'https://www.linnworks.net/',
             'Accept-Encoding': 'gzip,deflate',
-            'Authorization': 'ae359967-6507-4570-b4f4-f414eadc721e',
+            'Authorization': my_token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
         print("location_code===>", location.status_code)
