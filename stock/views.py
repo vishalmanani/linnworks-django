@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render
 from django.views import View
 import requests
@@ -21,5 +23,17 @@ class AuthToken(View):
 
         print("status_code====>", response.status_code)
         print("status_text====>", response.text)
+
+        location_url = "https://eu-ext.linnworks.net//api/Locations/GetLocation"
+        l_payload = {
+            "pkStockLocationId": "63d2d7b6-ec58-4f2c-a55e-2f8be11ea296",
+        }
+        headers = {
+            'Authorization': token,
+            'content-type': "application/json",
+        }
+        location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
+        print("location_code===>", location.status_code)
+        print("location_text===>", location.text)
 
         return render(request, self.template, locals())
