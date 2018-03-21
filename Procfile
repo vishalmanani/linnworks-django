@@ -1,1 +1,1 @@
-web: gunicorn biba.wsgi --log-file -
+web: gunicorn linnworks.wsgi --log-file -
