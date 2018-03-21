@@ -32,12 +32,12 @@ class AuthToken(View):
             'Host': 'eu - ext.linnworks.net',
             'Connection': 'keep - alive',
             'Accept': 'application / json, text / javascript, * / *; q = 0.01',
-            'Origin: https': '// www.linnworks.net',
-            'Accept - Language': 'en',
+            'Origin': 'https:// www.linnworks.net',
+            'Accept-Language': 'en',
             'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36',
-            'Content - Type': 'application / x - www - form - urlencoded;charset = UTF - 8',
+            'Content-Type': 'application / x - www - form - urlencoded;charset = UTF - 8',
             'Referer': 'https: // www.linnworks.net /',
-            'Accept - Encoding': 'gzip, deflate',
+            'Accept-Encoding': 'gzip, deflate',
             'Authorization': token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
