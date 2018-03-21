@@ -38,7 +38,7 @@ class AuthToken(View):
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Referer': 'https://www.linnworks.net/',
             'Accept-Encoding': 'gzip,deflate',
-            'Authorization': token,
+            'Authorization': 'ae359967-6507-4570-b4f4-f414eadc721e',
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
         print("location_code===>", location.status_code)
