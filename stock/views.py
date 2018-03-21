@@ -7,4 +7,6 @@ class AuthToken(View):
 
     def get(self, request):
         print("call get method")
+        token = request.GET.get('token', None)
+        print("token=======>", token)
         return render(request, self.template, locals())
