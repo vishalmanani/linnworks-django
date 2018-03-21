@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from stock.views import AuthToken
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'', AuthToken.as_view(), name="auth_token"),
 ]
