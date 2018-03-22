@@ -28,9 +28,12 @@ class AuthToken(View):
         print("mytoken=====>", my_token)
         print("Token=====>", my_token.get('Token'))
         main_token = my_token.get('Token')
-        location_url = "https://eu-ext.linnworks.net//api/Locations/GetLocation"
+        location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockConsumption"
         l_payload = {
-            "pkStockLocationId": "63d2d7b6-ec58-4f2c-a55e-2f8be11ea296"
+            "stockItemId": "ceb6c502-54c4-4ca9-b9cb-5d1131a309da",
+            "locationId": "ed65daa9-2867-4d05-b30f-3868b469a7e6",
+            "startDate": "2018-02-19T16:57:06.0303122+00:00",
+            "endDate": "2018-02-19T16:57:06.0358278+00:00"
         }
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
