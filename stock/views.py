@@ -36,7 +36,7 @@ class AuthToken(View):
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Authorization': main_token,
         }
-        location = requests.post(location_url, headers=headers)
+        location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
