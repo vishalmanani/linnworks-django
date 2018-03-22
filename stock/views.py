@@ -4,6 +4,8 @@ from django.shortcuts import render
 from django.views import View
 import requests
 
+main_token = None
+
 
 class AuthToken(View):
     template = 'index.html'
@@ -25,9 +27,16 @@ class AuthToken(View):
         print("status_text====>", response.text)
 
         my_token = json.loads(response.text)
-        print("mytoken=====>", my_token)
-        print("Token=====>", my_token.get('Token'))
         main_token = my_token.get('Token')
+
+        return render(request, self.template, locals())
+
+
+class TestApi(View):
+    template = 'index.html'
+
+    def get(self, request):
+
         location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockConsumption"
         l_payload = {
             "stockItemId": "ceb6c502-54c4-4ca9-b9cb-5d1131a309da",
