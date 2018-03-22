@@ -37,15 +37,15 @@ class TestApi(View):
     def get(self, request):
         main_token = Token.objects.last()
         print("main_token last===>", main_token.token)
-        location_url = "https://eu-ext.linnworks.net//api/Stock/SKUExists"
+        location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockLevel"
         l_payload = {
-            "SKU": "sample",
+            "stockItemId": "d2729fc3-f40a-40f0-990b-2c5909e08851",
         }
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Authorization': main_token.token,
         }
-        location = requests.post(location_url, headers=headers)
+        location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
