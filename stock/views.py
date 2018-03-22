@@ -3,13 +3,12 @@ import json
 from django.shortcuts import render
 from django.views import View
 import requests
-
+from .models import Token
 
 class AuthToken(View):
     template = 'index.html'
 
     def get(self, request):
-        print("call get method")
         token = request.GET.get('token', None)
         print("token=======>", token)
 
@@ -21,12 +20,13 @@ class AuthToken(View):
         }
         response = requests.post(url, data=payload)
 
-        print("status_code====>", response.status_code)
-        print("status_text====>", response.text)
+        print("AuthorizeByApplication status_code====>", response.status_code)
+        print("AuthorizeByApplication status_text====>", response.text)
 
         my_token = json.loads(response.text)
         main_token = my_token.get('Token')
-        request.session['main_token'] = main_token
+
+        Token.objects.create(token=main_token)
 
         return render(request, self.template, locals())
 
@@ -35,8 +35,8 @@ class TestApi(View):
     template = 'index.html'
 
     def get(self, request):
-        main_token = request.session['main_token']
-        print("main_token===>", main_token)
+        main_token = Token.objects.last()
+        print("main_token last===>", main_token.token)
         location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockConsumption"
         l_payload = {
             "stockItemId": "ceb6c502-54c4-4ca9-b9cb-5d1131a309da",
@@ -46,7 +46,7 @@ class TestApi(View):
         }
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            'Authorization': main_token,
+            'Authorization': main_token.token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
         print("location_code===>", location.status_code)
