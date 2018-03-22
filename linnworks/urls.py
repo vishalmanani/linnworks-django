@@ -19,6 +19,6 @@ from stock.views import AuthToken, TestApi
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', AuthToken.as_view(), name="auth_token"),
+    url(r'^home/$', AuthToken.as_view(), name="auth_token"),
     url(r'^test/$', TestApi.as_view(), name="test_api"),
 ]
