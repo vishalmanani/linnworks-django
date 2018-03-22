@@ -28,20 +28,13 @@ class AuthToken(View):
         print("mytoken=====>", my_token)
         print("Token=====>", my_token.get('Token'))
         main_token = my_token.get('Token')
-        location_url = "https://eu-ext.linnworks.net//api/Locations/GetLocation"
+        location_url = "https://eu-ext.linnworks.net//api/Inventory/GetInventoryItemsCount"
         l_payload = {
-            "pkStockLocationId": "63d2d7b6-ec58-4f2c-a55e-2f8be11ea296",
+            "includeDeleted": "true",
+            "includeArchived": "true",
         }
         headers = {
-            'Host': 'https://linnworks.herokuapp.com/',
-            'Connection': 'keep-alive',
-            'Accept': 'application/json,text/javascript,*/*;q=0.01',
-            'Origin': 'https://linnworks.herokuapp.com/',
-            'Accept-Language': 'en',
-            'Referer': 'https://www.linnworks.net/',
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-            'Accept-Encoding': 'gzip,deflate',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.90 Safari/537.36',
             'Authorization': main_token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
