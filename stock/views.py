@@ -37,15 +37,22 @@ class TestApi(View):
     def get(self, request):
         main_token = Token.objects.last()
         print("main_token last===>", main_token.token)
-        location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockLevel"
+        location_url = "https://eu-ext.linnworks.net//api/Orders/GetOrder"
         l_payload = {
-            "stockItemId": "d2729fc3-f40a-40f0-990b-2c5909e08851",
+            "orderId": "2843dbfd-eebf-45d4-8902-448e7422cb96",
+            "fulfilmentLocationId": "2b79ae14-3145-4b1f-89a3-718eb377d49a",
+            "loadItems": "true",
+            "loadAdditionalInfo": "true",
         }
         headers = {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+            'Host': 'linnworks.herokuapp.com',
+            'Accept': 'application/json,text/javascript,*/*;q=0.01',
+            'Origin': 'linnworks.herokuapp.com',
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Authorization': main_token.token,
         }
         location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
+        # location = requests.post(location_url, headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
