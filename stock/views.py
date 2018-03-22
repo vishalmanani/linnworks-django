@@ -28,16 +28,16 @@ class AuthToken(View):
         print("mytoken=====>", my_token)
         print("Token=====>", my_token.get('Token'))
         main_token = my_token.get('Token')
-        location_url = "https://eu-ext.linnworks.net//api/Inventory/GetInventoryItemsCount"
-        l_payload = {
-            "includeDeleted": "true",
-            "includeArchived": "true",
-        }
+        location_url = "https://eu-ext.linnworks.net//api/Inventory/GetCategories"
+        # l_payload = {
+        #     "includeDeleted": "true",
+        #     "includeArchived": "true",
+        # }
         headers = {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
             'Authorization': main_token,
         }
-        location = requests.post(location_url, data=json.dumps(l_payload), headers=headers)
+        location = requests.post(location_url, headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
