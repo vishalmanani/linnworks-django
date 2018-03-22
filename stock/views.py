@@ -36,7 +36,7 @@ class TestApi(View):
     template = 'index.html'
 
     def get(self, request):
-
+        print("main_token===>", main_token)
         location_url = "https://eu-ext.linnworks.net//api/Stock/GetStockConsumption"
         l_payload = {
             "stockItemId": "ceb6c502-54c4-4ca9-b9cb-5d1131a309da",
