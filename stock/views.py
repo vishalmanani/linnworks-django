@@ -2,8 +2,11 @@ import json
 
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
 from django.views import View
 import requests
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import Token
 
 
@@ -32,6 +35,7 @@ class AuthToken(View):
 
         return render(request, self.template, locals())
 
+    @method_decorator(csrf_exempt)
     def post(self, request):
         print('ebay post request')
         print(request)
@@ -39,6 +43,15 @@ class AuthToken(View):
 
         response = {"status": 200}
         return JsonResponse(response)
+
+@csrf_exempt
+def home(self, request):
+    print('ebay post request')
+    print(request)
+    print(request.body)
+
+    response = {"status": 200}
+    return JsonResponse(response)
 
 
 class TestApi(View):
