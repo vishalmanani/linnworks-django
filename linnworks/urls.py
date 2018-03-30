@@ -21,5 +21,4 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', AuthToken.as_view(), name="auth_token"),
     url(r'^test/', home, name="auth"),
-    url(r'^test/$', TestApi.as_view(), name="test_api"),
 ]
