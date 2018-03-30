@@ -44,9 +44,10 @@ class AuthToken(View):
         response = {"status": 200}
         return JsonResponse(response)
 
+
 @csrf_exempt
-def home(self, request):
-    print('ebay post request')
+def home(request):
+    print('ebay post request3')
     print(request)
     print(request.body)
 
