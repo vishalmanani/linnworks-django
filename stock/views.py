@@ -1,5 +1,6 @@
 import json
 
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
 import requests
@@ -30,6 +31,14 @@ class AuthToken(View):
         Token.objects.create(token=main_token)
 
         return render(request, self.template, locals())
+
+    def post(self, request):
+        print('ebay post request')
+        print(request)
+        print(request.body)
+
+        response = {"status": 200}
+        return JsonResponse(response)
 
 
 class TestApi(View):
