@@ -28,6 +28,7 @@ class AuthToken(View):
             "applicationSecret": "8dedcb4c-e4bb-4a24-ac18-5b8fc515814c",
             "token": token,
         }
+
         response = requests.post(url, data=payload)
 
         print("AuthorizeByApplication status_code====>", response.status_code)
