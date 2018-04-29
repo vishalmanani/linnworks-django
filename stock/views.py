@@ -41,25 +41,6 @@ class AuthToken(View):
 
         return render(request, self.template, locals())
 
-    @method_decorator(csrf_exempt)
-    def post(self, request):
-        print('ebay post request')
-        print(request)
-        print(request.body)
-
-        response = {"status": 200}
-        return JsonResponse(response)
-
-
-@csrf_exempt
-def home(request):
-    print('ebay post request3')
-    print(request)
-    print(request.body)
-
-    response = {"status": 200}
-    return JsonResponse(response)
-
 
 class TestApi(View):
     template = 'index.html'
