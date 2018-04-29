@@ -20,5 +20,5 @@ from stock.views import AuthToken, TestApi
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', AuthToken.as_view(), name="auth_token"),
-    url(r'^test/', TestApi, name="auth"),
+    url(r'^test/', TestApi.as_view(), name="auth"),
 ]
