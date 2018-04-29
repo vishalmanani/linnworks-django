@@ -50,14 +50,15 @@ class TestApi(View):
         print("main_token last===>", main_token.token)
         # location_url = "https://eu-ext.linnworks.net//api/Inventory/UpdateInventoryItem"
         # location_url = "https://eu-ext.linnworks.net//api/Stock/SetStockLevel"
-        location_url="https://eu-ext.linnworks.net//api/Inventory/GetCategories"
+        # location_url="https://eu-ext.linnworks.net//api/Inventory/GetCategories"
         # location_url="https://eu-ext.linnworks.net//api/Inventory/GetPackageGroups"
-        # payload = dict(
-        #     orderId='2843dbfd-eebf-45d4-8902-448e7422cb96',
-        #     fulfilmentLocationId="2b79ae14-3145-4b1f-89a3-718eb377d49a",
-        #     loadItems="true",
-        #     loadAdditionalInfo="true",
-        # )
+        location_url = "https://eu-ext.linnworks.net//api/ProcessedOrders/SearchProcessedOrdersPaged"
+        payload = dict(
+            orderId='2843dbfd-eebf-45d4-8902-448e7422cb96',
+            fulfilmentLocationId="2b79ae14-3145-4b1f-89a3-718eb377d49a",
+            loadItems="true",
+            loadAdditionalInfo="true",
+        )
         # payload = dict(
         #     update=json.dumps({
         #         "pkId": "911db59c-1da6-4c9f-b88f-6325a7e5c303",
@@ -79,6 +80,26 @@ class TestApi(View):
         #         }
         #     ]),
         # )
+
+        # payload = dict(
+        #     from='2018-02-19',
+        #     to='2018-02-19',
+        #     dateType='0',
+        #     searchField='sample string 1',
+        #     exactMatch='true',
+        #     searchTerm='sample string 1',
+        #     pageNum='1',
+        #     numEntriesPerPage = '100',
+        # )
+
+        payload = dict(
+            dateType='0',
+            searchField='nOrderId',
+            exactMatch="true",
+            searchTerm="100002",
+            pageNum="1",
+            numEntriesPerPage="10"
+        )
 
         # payload = dict(
         #
@@ -122,8 +143,8 @@ class TestApi(View):
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Authorization': main_token.token,
         }
-        # location = requests.post(location_url, data=payload, headers=headers)
-        location = requests.post(location_url, headers=headers)
+        location = requests.post(location_url, data=payload, headers=headers)
+        # location = requests.post(location_url, headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
