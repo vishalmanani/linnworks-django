@@ -96,7 +96,7 @@ class TestApi(View):
             dateType='0',
             searchField='nOrderId',
             exactMatch="true",
-            searchTerm="100002",
+            searchTerm="100003",
             pageNum="1",
             numEntriesPerPage="10"
         )
