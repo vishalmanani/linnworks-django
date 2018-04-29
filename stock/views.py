@@ -48,9 +48,9 @@ class TestApi(View):
     def get(self, request):
         main_token = Token.objects.last()
         print("main_token last===>", main_token.token)
-        location_url = "https://eu-ext.linnworks.net//api/Inventory/UpdateInventoryItem"
+        # location_url = "https://eu-ext.linnworks.net//api/Inventory/UpdateInventoryItem"
         # location_url = "https://eu-ext.linnworks.net//api/Stock/SetStockLevel"
-        # location_url="https://eu-ext.linnworks.net//api/Inventory/GetCategories"
+        location_url="https://eu-ext.linnworks.net//api/Inventory/GetCategories"
         # location_url="https://eu-ext.linnworks.net//api/Inventory/GetPackageGroups"
         # payload = dict(
         #     orderId='2843dbfd-eebf-45d4-8902-448e7422cb96',
@@ -80,50 +80,50 @@ class TestApi(View):
         #     ]),
         # )
 
-        payload = dict(
-
-            inventoryItem=json.dumps({
-                # "VariationGroupName": "sample string 1",
-                "Quantity": 500,
-                "InOrder": 200,
-                "Due": 300,
-                "MinimumLevel": 10,
-                "Available": 10,
-                "CreationDate": "2018-02-19T16:57:06.8269989+00:00",
-                "IsCompositeParent": "true",
-                "ItemNumber": "A1001",
-                "ItemTitle": "sample string 6",
-                "BarcodeNumber": "sample string 7",
-                "MetaData": "sample string 8",
-                "isBatchedStockType": "false",
-                "PurchasePrice": 20,
-                "RetailPrice": 20,
-                "TaxRate": 10,
-                "PostalServiceId": "00000000-0000-0000-0000-000000000000",
-                "PostalServiceName": "Default",
-                "CategoryId": "00000000-0000-0000-0000-000000000000",
-                "CategoryName": "Default",
-                "PackageGroupId": "00000000-0000-0000-0000-000000000000",
-                "PackageGroupName": "Default",
-                "Height": 17.1,
-                "Width": 18.1,
-                "Depth": 19.1,
-                "Weight": 20.1,
-                "InventoryTrackingType": 0,
-                "BatchNumberScanRequired": "true",
-                "SerialNumberScanRequired": "true",
-                "StockItemId": "3ae3e4ed-fe9e-4d42-864a-98031e6863d6"
-            })
-
-        )
+        # payload = dict(
+        #
+        #     inventoryItem=json.dumps({
+        #         # "VariationGroupName": "sample string 1",
+        #         "Quantity": 500,
+        #         "InOrder": 200,
+        #         "Due": 300,
+        #         "MinimumLevel": 10,
+        #         "Available": 10,
+        #         "CreationDate": "2018-02-19T16:57:06.8269989+00:00",
+        #         "IsCompositeParent": "true",
+        #         "ItemNumber": "A1001",
+        #         "ItemTitle": "sample string 6",
+        #         "BarcodeNumber": "sample string 7",
+        #         "MetaData": "sample string 8",
+        #         "isBatchedStockType": "false",
+        #         "PurchasePrice": 20,
+        #         "RetailPrice": 20,
+        #         "TaxRate": 10,
+        #         "PostalServiceId": "00000000-0000-0000-0000-000000000000",
+        #         "PostalServiceName": "Default",
+        #         "CategoryId": "00000000-0000-0000-0000-000000000000",
+        #         "CategoryName": "Default",
+        #         "PackageGroupId": "00000000-0000-0000-0000-000000000000",
+        #         "PackageGroupName": "Default",
+        #         "Height": 17.1,
+        #         "Width": 18.1,
+        #         "Depth": 19.1,
+        #         "Weight": 20.1,
+        #         "InventoryTrackingType": 0,
+        #         "BatchNumberScanRequired": "true",
+        #         "SerialNumberScanRequired": "true",
+        #         "StockItemId": "3ae3e4ed-fe9e-4d42-864a-98031e6863d6"
+        #     })
+        #
+        # )
         # print(payload)
         headers = {
             'Accept': 'application/json,text/javascript,*/*;q=0.01',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'Authorization': main_token.token,
         }
-        location = requests.post(location_url, data=payload, headers=headers)
-        # location = requests.post(location_url, headers=headers)
+        # location = requests.post(location_url, data=payload, headers=headers)
+        location = requests.post(location_url, headers=headers)
         print("location_code===>", location.status_code)
         print("location_text===>", location.text)
 
