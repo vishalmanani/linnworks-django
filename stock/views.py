@@ -52,13 +52,14 @@ class TestApi(View):
         # location_url = "https://eu-ext.linnworks.net//api/Stock/SetStockLevel"
         # location_url="https://eu-ext.linnworks.net//api/Inventory/GetCategories"
         # location_url="https://eu-ext.linnworks.net//api/Inventory/GetPackageGroups"
-        location_url = "https://eu-ext.linnworks.net//api/ProcessedOrders/SearchProcessedOrdersPaged"
-        payload = dict(
-            orderId='2843dbfd-eebf-45d4-8902-448e7422cb96',
-            fulfilmentLocationId="2b79ae14-3145-4b1f-89a3-718eb377d49a",
-            loadItems="true",
-            loadAdditionalInfo="true",
-        )
+        # location_url = "https://eu-ext.linnworks.net//api/ProcessedOrders/SearchProcessedOrdersPaged"
+        location_url = "https://eu-ext.linnworks.net//api/Orders/GetOrderItems"
+        # payload = dict(
+        #     orderId='2843dbfd-eebf-45d4-8902-448e7422cb96',
+        #     fulfilmentLocationId="2b79ae14-3145-4b1f-89a3-718eb377d49a",
+        #     loadItems="true",
+        #     loadAdditionalInfo="true",
+        # )
         # payload = dict(
         #     update=json.dumps({
         #         "pkId": "911db59c-1da6-4c9f-b88f-6325a7e5c303",
@@ -92,13 +93,17 @@ class TestApi(View):
         #     numEntriesPerPage = '100',
         # )
 
+        # payload = dict(
+        #     dateType='0',
+        #     searchField='nOrderId',
+        #     exactMatch="true",
+        #     searchTerm="100003",
+        #     pageNum="1",
+        #     numEntriesPerPage="10"
+        # )
+
         payload = dict(
-            dateType='0',
-            searchField='nOrderId',
-            exactMatch="true",
-            searchTerm="100003",
-            pageNum="1",
-            numEntriesPerPage="10"
+            orderId='f635e1c6-fc7c-48d9-af7b-5bba4b859186'
         )
 
         # payload = dict(
