@@ -23,6 +23,12 @@ class AuthToken(View):
         #     "applicationSecret": "8f0df2ed-9338-402b-9dd8-4b3efa560d0e",
         #     "token": token,
         # }
+        # payload = {
+        #     "applicationId": "214ae235-33f1-439b-b5cc-ce18fd22fbee",
+        #     "applicationSecret": "8dedcb4c-e4bb-4a24-ac18-5b8fc515814c",
+        #     "token": token,
+        # }
+
         payload = {
             "applicationId": "214ae235-33f1-439b-b5cc-ce18fd22fbee",
             "applicationSecret": "8dedcb4c-e4bb-4a24-ac18-5b8fc515814c",
@@ -36,7 +42,7 @@ class AuthToken(View):
 
         my_token = json.loads(response.text)
         main_token = my_token.get('Token')
-
+        print(main_token)
         Token.objects.create(token=main_token)
 
         return render(request, self.template, locals())
@@ -103,7 +109,8 @@ class TestApi(View):
         # )
 
         payload = dict(
-            orderId='f635e1c6-fc7c-48d9-af7b-5bba4b859186'
+            orderId='f635e1c6-fc7c-48d9-af7b-5bba4b859186',
+            fulfilmentCenter='00000000-0000-0000-0000-000000000000'
         )
 
         # payload = dict(
@@ -146,7 +153,7 @@ class TestApi(View):
         headers = {
             'Accept': 'application/json,text/javascript,*/*;q=0.01',
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'Authorization': main_token.token,
+            'Authorization': 'd4a57695-4e5f-48e4-b5e0-198ade12ec0b',
         }
         location = requests.post(location_url, data=payload, headers=headers)
         # location = requests.post(location_url, headers=headers)
