@@ -30,8 +30,8 @@ class AuthToken(View):
         # }
 
         payload = {
-            "applicationId": "143f4d45-aa0a-459e-9748-e60aad87625a",
-            "applicationSecret": "ce56b151-ef61-4e03-aada-901d78b9f848",
+            "applicationId": "10b0147f-c451-423a-9df8-b5c2c3841ad7",
+            "applicationSecret": "a01e7d34-7483-4b3f-9709-b85f824edcbd",
             "token": token,
         }
 
