@@ -18,23 +18,13 @@ class AuthToken(View):
         print("token=======>", token)
 
         url = 'https://api.linnworks.net//api/Auth/AuthorizeByApplication'
-        # payload = {
-        #     "applicationId": "65625950-d006-4e8f-a5a4-b3c8e1ca4cfe",
-        #     "applicationSecret": "8f0df2ed-9338-402b-9dd8-4b3efa560d0e",
-        #     "token": token,
-        # }
-        # payload = {
-        #     "applicationId": "214ae235-33f1-439b-b5cc-ce18fd22fbee",
-        #     "applicationSecret": "8dedcb4c-e4bb-4a24-ac18-5b8fc515814c",
-        #     "token": token,
-        # }
 
         payload = {
-            "applicationId": "10b0147f-c451-423a-9df8-b5c2c3841ad7",
-            "applicationSecret": "a01e7d34-7483-4b3f-9709-b85f824edcbd",
+            "applicationId": "65761973-01a6-4ab4-ae1f-212e6c3f83c1",
+            "applicationSecret": "6859f0fa-c3d4-4e97-83ee-03d3fe042140",
             "token": token,
         }
-
+        print('payload=====>', payload)
         response = requests.post(url, data=payload)
 
         print("AuthorizeByApplication status_code====>", response.status_code)
